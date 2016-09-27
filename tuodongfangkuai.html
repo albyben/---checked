@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网站图片导航</title>
+	<script src="jquery-3.1.0.js"></script>
+	<style type="text/css">
+		#container{width:660px;height:440px;background: #eee;margin:0 auto;position: relative;}
+		#container div{border:1px dashed black;border-radius: 15px;}
+		.bang1{width:198px;height:418px;margin:10px;float:left;background: #fff;}
+		.bang2,.bang3,.bang4,.bang5{width:198px;height:198px;float:left;}
+		.bang2{background: red;position: absolute;top:10px;left:230px;}
+		.bang3{background: green;position: absolute;top:10px;left:450px;}
+		.bang4{background: blue;position:absolute;top:230px;left:230px;}
+		.bang5{background: yellow;position: absolute;top:230px;left:450px;}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="bang1"></div>
+		<div class="bang2"></div>
+		<div class="bang3"></div>
+		<div class="bang4"></div>
+		<div class="bang5"></div>
+	</div>
+	<script type="text/javascript">
+		// $("div:gt(0)").click(fn1);
+		// $("div:gt(0)").mousemove(fn2);
+		// var flag=false;
+		// function fn1(e){
+		// 	flag=true;
+		// 	$(this).css("opacity","0.5");
+		// 	//console.log(e.clientX);
+		// 		mouseStartX=e.clientX-this.offsetLeft;
+		// 		mouseStartY=e.clientY-this.offsetTop;
+		// 		fn2();
+		// }
+
+		// function fn2(evt){
+		// 	var evt=event||window.event;
+		// 	if(flag){
+		// 		this.style.left=evt.clientX-mouseStartX+"px";
+		// 		this.style.top=evt.clientY-mouseStartY+"px";
+		// 		if(this.offsetLeft<110){
+		// 			this.style.display="none";
+		// 		}
+		// 	}	
+		// }
+		console.log($("div:gt(1)"));
+		$("div:gt(1)").click(function(e){
+			var	mouseStartX=e.clientX-this.offsetLeft;
+			var mouseStartY=e.clientY-this.offsetTop;
+			$(this).css("opacity","0.5");
+			$(this).css("z-index","1");
+			$("div:gt(1)").mousemove(function(evt){
+				//通过判断div的Z-index值是否为1,对div进行mousemove操作
+				if(this.style.zIndex==1){
+					var evt=event||window.event;
+					this.style.left=evt.clientX-mouseStartX+"px";
+					this.style.top=evt.clientY-mouseStartY+"px";
+					//拖动div到指定位置，将div隐藏
+					if(this.offsetLeft<110){
+						this.style.display="none";
+					}
+					//
+					if(this.offsetLeft)
+				}	
+			})
+		})
+		
+
+	</script>
+</body>
+</html>
